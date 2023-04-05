@@ -20,7 +20,9 @@ module.exports = (app) => {
     app.use(morgan("dev")); //logging all api request and status code in console
   }
   app.use(express.json({ limit: "10kb" }));
-  app.use(xss());
+  app.use(xss()); //Cross Size Scripting attack shield
+
+  //Routes
   app.use("/api/user", userRoute);
   app.use("*", (req, res) => {
     res.status(404).send("No Routes Found...!");

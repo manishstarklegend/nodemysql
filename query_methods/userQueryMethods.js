@@ -46,3 +46,21 @@ module.exports.deleteUserQuery = async function (email) {
     });
   });
 };
+
+module.exports.getAllUsersQuery = async function () {
+  return new Promise(function (resolve, reject) {
+    db.query(
+      "SELECT name , email , insert_date FROM user ORDER BY insert_date DESC",
+      (err, data) => {
+        if (err) return reject(new AppError(err.message, 400));
+
+        if (data.length == 0) {
+          console.log(data);
+          return reject(new AppError("No Users Found..", 400));
+        }
+
+        return resolve(data);
+      }
+    );
+  });
+};

@@ -43,6 +43,11 @@ module.exports.deleteUser = catchAsync(async (req, res, next) => {
   const deleteUser = await UserQuery.deleteUserQuery(req.user.email);
   res.status(200).send("user deleted");
 });
+
+module.exports.getAllUsers = catchAsync(async (req, res, next) => {
+  const allUsers = await UserQuery.getAllUsersQuery();
+  res.status(200).send(allUsers);
+});
 // Validation
 module.exports.validateCreateUser = function (user) {
   const schema = Joi.object({

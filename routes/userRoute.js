@@ -10,5 +10,6 @@ router.post("/login", validator(User.validateLoginUser), User.login);
 router.get("/me", auth(), User.me);
 router.patch("/", auth(), User.updateUser);
 router.delete("/", auth(), User.deleteUser);
+router.get("/allUsers", auth(), User.getAllUsers);
 
 module.exports = router;

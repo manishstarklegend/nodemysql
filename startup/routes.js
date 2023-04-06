@@ -16,6 +16,7 @@ module.exports = (app) => {
   //Middleware for security
   app.use(helmet()); //securing headers
   app.use("/", limiter); // api calling limited per IP
+
   if (process.env.NODE_ENV === "development") {
     app.use(morgan("dev")); //logging all api request and status code in console
   }

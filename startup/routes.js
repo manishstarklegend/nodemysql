@@ -20,7 +20,7 @@ module.exports = (app) => {
     app.use(morgan("dev")); //logging all api request and status code in console
   }
   app.use(express.json({ limit: "10kb" }));
-  app.use(xss()); //Cross Size Scripting attack shield
+  app.use(xss()); //Cross Site Scripting attack shield
 
   //Routes
   app.use("/api/user", userRoute);
